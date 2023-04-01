@@ -1,0 +1,15 @@
+homeassistant:
+  allowlist_external_dirs:
+    - "/config/api_calls"
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+sensor:
+  - platform: command_line
+    name: GPT JSON Response
+    json_attributes:
+      - response
+    command: 'cat /config/api_calls/chat_gpt_response.json'
+    scan_interval: 1
+    value_template: "GPT API Response"

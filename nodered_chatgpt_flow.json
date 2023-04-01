@@ -1,0 +1,148 @@
+[
+    {
+        "id": "99eb58c428cc8a9c",
+        "type": "tab",
+        "label": "ChatGPT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "098f1a3f756fd023",
+        "type": "chatgpt",
+        "z": "99eb58c428cc8a9c",
+        "name": "ChatGPT",
+        "API_KEY": "{YOUR_OPENAI_API_KEY}",
+        "Organization": "{YOUR_OPENAI_ORGANISATION}",
+        "topic": "turbo",
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "390c3cf33c2a48f2"
+            ]
+        ]
+    },
+    {
+        "id": "7af5aac9dde87e9b",
+        "type": "server-state-changed",
+        "z": "99eb58c428cc8a9c",
+        "name": "GPT_TEXT",
+        "server": "e5d82e19efd2e799",
+        "version": 4,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_text.gpt_question",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": true,
+        "ignorePrevStateUnknown": true,
+        "ignorePrevStateUnavailable": true,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 130,
+        "y": 360,
+        "wires": [
+            [
+                "098f1a3f756fd023"
+            ]
+        ]
+    },
+    {
+        "id": "edd2d6921156934c",
+        "type": "file",
+        "z": "99eb58c428cc8a9c",
+        "name": "",
+        "filename": "/data/json/chat_gpt_response.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1000,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "390c3cf33c2a48f2",
+        "type": "function",
+        "z": "99eb58c428cc8a9c",
+        "name": "To JSON",
+        "func": "var payload = msg.payload\n    // Convert data to a JSON string, escaping forward slashes\nvar jsonString = JSON.stringify({ \"response\": payload})\njsonString.replace(/([^\\\\])\\//g, '$1\\\\/');\n\nreturn {\"payload\": jsonString};\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 200,
+        "wires": [
+            [
+                "edd2d6921156934c"
+            ]
+        ]
+    },
+    {
+        "id": "e5d82e19efd2e799",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": false,
+        "rejectUnauthorizedCerts": false,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": true,
+        "heartbeatInterval": "30",
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": ": ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "default",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": false
+    }
+]

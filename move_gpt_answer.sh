@@ -2,5 +2,5 @@
 while true
 do
 	sleep .5
-	[ -f /home/ubuntu/docker/homeassistant_mariadb/nodered/data/json/chat_gpt_response.json ] && mv /home/ubuntu/docker/homeassistant_mariadb/nodered/data/json/chat_gpt_response.json /home/ubuntu/docker/homeassistant_mariadb/config/api_calls/chat_gpt_response.json
+	[ -f /home/your_nodered_directory/chat_gpt_response.json ] && mv /home/your_nodered_directory/chat_gpt_response.json /home/your_homeassistant_api_calls_directory/chat_gpt_response.json
 done

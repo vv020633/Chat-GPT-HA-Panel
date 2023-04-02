@@ -1,0 +1,11 @@
+
+type: vertical-stack
+cards:
+  - type: entities
+    entities:
+      - entity: input_text.gpt_question
+        icon: mdi:robot-confused-outline
+        secondary_info: none
+        name: ChatGPT
+  - type: markdown
+    content: '{{state_attr("sensor.gpt_json_response","response")}}'

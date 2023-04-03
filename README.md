@@ -4,7 +4,7 @@
 - [Node-Red](https://nodered.org/)
 - [Bash Scripting](https://devhints.io/bash)
 - [Home Asssitant](https://www.home-assistant.io/)
--[Crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)
+- [Crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)
 
 ## Prerequisite requirements
 - You'll need to have Node Red running and a location on your host machine where you access files that are stored persistantly
@@ -23,7 +23,7 @@ Just to paint the picture of how my system is setup, I'm running [Ubuntu Server]
  ![nodes](https://user-images.githubusercontent.com/33399376/229354686-3900e369-f157-41d9-826c-a2b782e6691d.PNG)
 
   
-2. [Import](https://nodered.org/docs/user-guide/editor/workspace/import-export) the nodered_chatgpt_flow.json from this repository into Node-Red. It should produced the workflow shown below
+2. [Import](https://nodered.org/docs/user-guide/editor/workspace/import-export) the nodered_chatgpt_flow.json from this repository into Node-Red. It should produce the workflow shown below
 ![Workflow](https://user-images.githubusercontent.com/33399376/229316344-786eb510-8554-4835-8858-16d769e5b179.PNG)
  For this workflow to succeed, you'll need to provide your own API Key and  [Organzation ID](https://platform.openai.com/docs/guides/production-best-practices) as input into the ChatGPT node, and you'll need a relevant [input text](https://www.home-assistant.io/integrations/input_text/) helper to kick off the flow
  ![input_helper](https://user-images.githubusercontent.com/33399376/229316543-55b2f379-326a-4d92-82dd-26c7fb737636.PNG)
